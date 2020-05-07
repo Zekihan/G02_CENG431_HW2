@@ -29,7 +29,7 @@ public class NoteApp {
 
         group1.add(note3);
         group1.add(note4);
-        group1.add(note5);
+
 
         notelist.add(note1);
         notelist.add(group1);
@@ -37,13 +37,15 @@ public class NoteApp {
 
         INote root = new NoteGroup(0, "Notes", notelist);
 
+        ((NoteGroup) root).add(note5);
+        ((NoteGroup) root).get(5).displayContent();
+
         root.displayContent();
         System.out.println("\n\n");
+
+
+
         group1.displayContent();
-
-
-
-
 
     }
 

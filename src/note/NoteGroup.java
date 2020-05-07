@@ -21,4 +21,14 @@ public class NoteGroup extends AbstractNote{
     public boolean add(INote note){
         return notes.add(note);
     }
+
+    public INote get(int id){
+        for(INote note : notes){
+            if(note.getId() == id){
+                return note;
+            }
+        }
+        return null;
+    }
+
 }
