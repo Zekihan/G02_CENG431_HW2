@@ -1,6 +1,6 @@
-package States;
+package note.state;
 
-import Notes.Note;
+import note.Note;
 
 public class CompletedState implements INoteState{
     @Override

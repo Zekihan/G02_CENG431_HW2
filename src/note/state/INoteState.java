@@ -1,6 +1,6 @@
-package States;
+package note.state;
 
-import Notes.Note;
+import note.Note;
 
 public interface INoteState {
     boolean cancel(Note note);

@@ -1,8 +1,8 @@
-package States;
+package note.state;
 
-import Notes.Note;
+import note.Note;
 
-public class PermanentState implements INoteState{
+public class IncompleteState implements INoteState{
     @Override
     public boolean cancel(Note note) {
         note.setState(new CancelledState());
@@ -11,12 +11,12 @@ public class PermanentState implements INoteState{
 
     @Override
     public boolean complete(Note note) {
-        System.out.println("permanent notes cannot completed");
-        return false;
+        note.setState(new CompletedState());
+        return true;
     }
 
     @Override
     public String getName() {
-        return "PermanentState";
+        return "IncompleteState";
     }
 }
