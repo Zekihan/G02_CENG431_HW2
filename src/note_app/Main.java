@@ -6,6 +6,7 @@ public class Main {
 
         NoteApp noteApp = new NoteApp();
         noteApp.init();
+        noteApp.start();
     }
 
 }

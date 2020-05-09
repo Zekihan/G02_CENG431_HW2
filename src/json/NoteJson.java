@@ -8,11 +8,10 @@ import note.state.INoteState;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class NoteJson implements JsonSaver {
-
 
     @Override
     public String toJson(INote note) {
@@ -24,7 +23,7 @@ public class NoteJson implements JsonSaver {
         return INoteFromJson(note);
     }
 
-    public String INoteToJson(INote root){
+    private String INoteToJson(INote root){
         NoteJson nj = new NoteJson();
         Gson gson = nj.noteToJson();
         if(root.getClass().getCanonicalName().equals(Note.class.getCanonicalName())){
@@ -35,7 +34,7 @@ public class NoteJson implements JsonSaver {
         }
     }
 
-    public INote INoteFromJson(String rootJson){
+    private INote INoteFromJson(String rootJson){
         NoteJson nj = new NoteJson();
         Gson gson = nj.noteFromJson();
         JsonElement j = gson.fromJson(rootJson, JsonObject.class);
@@ -70,7 +69,7 @@ public class NoteJson implements JsonSaver {
         builder.registerTypeAdapter(NoteGroup.class, (JsonDeserializer<NoteGroup>) (json, typeOfT, context) -> {
             JsonObject jsonObject = json.getAsJsonObject();
             JsonArray jsonNotes = jsonObject.get("notes").getAsJsonArray();
-            List<INote> notes = new ArrayList<>();
+            List<INote> notes = new LinkedList<>();
             for (JsonElement jsonNote:jsonNotes
             ) {
                 String className = jsonNote.getAsJsonObject().get("class_name").getAsString();

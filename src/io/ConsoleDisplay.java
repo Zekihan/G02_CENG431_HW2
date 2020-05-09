@@ -15,5 +15,10 @@ public class ConsoleDisplay implements Display {
         System.out.println(noteItem);
     }
 
+    public void displayMessage(String message){
+
+        System.out.println(message);
+    }
+
 }
 

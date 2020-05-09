@@ -6,4 +6,6 @@ public interface Display {
 
     public void displayTitle(int id, String title);
 
+    public void displayMessage(String message);
+
 }
