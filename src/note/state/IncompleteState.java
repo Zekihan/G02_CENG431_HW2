@@ -14,9 +14,4 @@ public class IncompleteState implements INoteState{
         note.setState(new CompletedState());
         return true;
     }
-
-    @Override
-    public String getName() {
-        return "IncompleteState";
-    }
 }

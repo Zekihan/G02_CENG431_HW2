@@ -1,13 +1,11 @@
 package note_app;
 
-import io.NoteJson;
 import note.INote;
 import note.Note;
 import note.NoteGroup;
 import note.state.IncompleteState;
 import note.state.PermanentState;
 
-import java.sql.Time;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -48,15 +46,6 @@ public class NoteApp {
 
 
         group1.displayContent();
-
-        NoteJson j = new NoteJson();
-        String js = j.noteToJson(note1);
-        System.out.println(js);
-        INote i = j.noteFromJson(js);
-        i.displayTitle();
-        ((Note)i).cancel();
-        js = j.noteToJson(i);
-        System.out.println(js);
 
     }
 

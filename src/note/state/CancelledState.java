@@ -14,9 +14,4 @@ public class CancelledState implements INoteState{
         System.out.println("canceled notes cannot canceled");
         return false;
     }
-
-    @Override
-    public String getName() {
-        return "CancelledState";
-    }
 }

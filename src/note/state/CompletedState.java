@@ -14,9 +14,4 @@ public class CompletedState implements INoteState{
         System.out.println("completed notes cannot canceled");
         return false;
     }
-
-    @Override
-    public String getName() {
-        return "CompletedState";
-    }
 }

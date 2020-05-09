@@ -31,4 +31,7 @@ public class NoteGroup extends AbstractNote{
         return null;
     }
 
+    public List<INote> getNotes() {
+        return notes;
+    }
 }

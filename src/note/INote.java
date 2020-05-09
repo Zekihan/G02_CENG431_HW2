@@ -1,5 +1,7 @@
 package note;
 
+import java.util.List;
+
 public interface INote {
 
     public void displayTitle();
@@ -7,5 +9,7 @@ public interface INote {
     public void displayContent();
 
     public int getId();
+
+    public String getTitle();
 
 }

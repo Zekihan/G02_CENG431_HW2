@@ -14,9 +14,4 @@ public class PermanentState implements INoteState{
         System.out.println("permanent notes cannot completed");
         return false;
     }
-
-    @Override
-    public String getName() {
-        return "PermanentState";
-    }
 }
