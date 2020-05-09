@@ -1,5 +1,8 @@
 package note;
 
+import io.ConsoleDisplay;
+import io.Display;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -20,9 +23,16 @@ public class NoteGroup extends AbstractNote{
 
     @Override
     public void displayContent() {
-        for(INote note : notes){
-            note.displayTitle();
+        if(!notes.isEmpty()){
+            for(INote note : notes){
+                note.displayTitle();
+            }
+        }else{
+            Display display = new ConsoleDisplay();
+            display.displayMessage("Empty Group");
         }
+
+
     }
 
     public boolean add(INote note){

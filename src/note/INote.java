@@ -1,7 +1,5 @@
 package note;
 
-import java.util.List;
-
 public interface INote {
 
     public void displayTitle();

@@ -2,9 +2,9 @@ package io;
 
 public class ConsoleDisplay implements Display {
 
-    public void displayNote(String title, String content){
+    public void displayNote(String title, String content, String date, String state){
 
-        String note = title + "\n" + content;
+        String note =  "Title: " + title +"\n"+ "Content: " + content +"\n"+ "Date: " + date +"\n"+ "State: " + state;
         System.out.println(note);
     }
 

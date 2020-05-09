@@ -3,6 +3,7 @@ package note;
 import io.ConsoleDisplay;
 import io.Display;
 import note.state.INoteState;
+import note.state.IllegalStateChange;
 
 import java.util.Date;
 
@@ -27,19 +28,19 @@ public class Note extends AbstractNote {
         this.state = state;
     }
 
-    public boolean cancel() {
+    public boolean cancel() throws IllegalStateChange {
         state.cancel(this);
         return false;
     }
 
-    public boolean complete() {
+    public boolean complete() throws IllegalStateChange {
         state.complete(this);
         return false;
     }
 
     public void displayContent(){
         Display display = new ConsoleDisplay();
-        display.displayNote(getTitle(), getContent());
+        display.displayNote(getTitle(), getContent(), getDate().toString(), getState().toString());
     }
 
     private String getContent() {

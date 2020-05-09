@@ -13,4 +13,9 @@ public class PermanentState implements INoteState{
     public boolean complete(Note note) throws IllegalStateChange{
         throw new IllegalStateChange("Permanent notes cannot be completed.");
     }
+
+    @Override
+    public String toString() {
+        return "Permanent State";
+    }
 }

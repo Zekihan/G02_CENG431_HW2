@@ -12,4 +12,9 @@ public class CompletedState implements INoteState{
     public boolean complete(Note note) throws IllegalStateChange{
         throw new IllegalStateChange("This note is already completed.");
     }
+
+    @Override
+    public String toString() {
+        return "Completed State";
+    }
 }

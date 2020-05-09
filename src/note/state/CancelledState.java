@@ -12,4 +12,9 @@ public class CancelledState implements INoteState{
     public boolean complete(Note note) throws IllegalStateChange{
         throw new IllegalStateChange("Completed notes cannot be canceled.");
     }
+
+    @Override
+    public String toString() {
+        return "Cancelled State";
+    }
 }
