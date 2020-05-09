@@ -10,8 +10,7 @@ public class PermanentState implements INoteState{
     }
 
     @Override
-    public boolean complete(Note note) {
-        System.out.println("permanent notes cannot completed");
-        return false;
+    public boolean complete(Note note) throws IllegalStateChange{
+        throw new IllegalStateChange("Permanent notes cannot be completed.");
     }
 }
