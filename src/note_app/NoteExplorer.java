@@ -36,6 +36,7 @@ public class NoteExplorer {
         while(isBrowsing){
             currentGroup.displayContent();
             display.displayMessage("C:CreateNote G:CreateNoteGroup B:Back Q:Quit");
+            display.displayMessage("Please enter your command here: ");
             String inputStr = input.readString().toUpperCase();
 
             if(isNumeric(inputStr)){
@@ -69,6 +70,7 @@ public class NoteExplorer {
                     noteGroupStack.add(currentGroup);
                     currentGroup = (NoteGroup) nextNote;
                 }
+
             }else{
                 switch (inputStr){
                     case "C":   createNote(currentGroup);
@@ -119,6 +121,7 @@ public class NoteExplorer {
         group.add(newNoteGroup);
     }
 
+    //Change note's state
     private void changeNoteState(Note note, int op){
         try {
             if(op == 1){

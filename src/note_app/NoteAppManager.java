@@ -33,6 +33,7 @@ public class NoteAppManager {
             display.displayTitle(3, "Import Notes");
             display.displayTitle(4, "Reset Notes");
             display.displayTitle(5, "Exit");
+            display.displayMessage("Please enter your command here: ");
 
             //Input actions
             switch (input.readString()){
