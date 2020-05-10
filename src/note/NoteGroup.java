@@ -74,6 +74,7 @@ public class NoteGroup extends AbstractNote{
             this.notes = new LinkedList<INote>();
 
         }else{
+            this.notes = new LinkedList<INote>();
             notes.addAll(notesList);
         }
 
