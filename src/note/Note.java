@@ -9,9 +9,9 @@ import java.util.Date;
 
 public class Note extends AbstractNote {
 
-    INoteState state;
-    String content;
-    Date date;
+    private INoteState state;
+    private String content;
+    private Date date;
 
     public Note(int id, String title, INoteState state, String content, Date date) {
         super(id, title);
@@ -28,14 +28,12 @@ public class Note extends AbstractNote {
         this.state = state;
     }
 
-    public boolean cancel() throws IllegalStateChange {
+    public void cancel() throws IllegalStateChange {
         state.cancel(this);
-        return false;
     }
 
-    public boolean complete() throws IllegalStateChange {
+    public void complete() throws IllegalStateChange {
         state.complete(this);
-        return false;
     }
 
     public void displayContent(){

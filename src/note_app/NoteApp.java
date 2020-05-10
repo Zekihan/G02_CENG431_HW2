@@ -18,9 +18,9 @@ import java.util.*;
 
 public class NoteApp {
 
-    INote root;
-    Display display;
-    Input input;
+    private INote root;
+    private Display display;
+    private Input input;
 
     public void start(){
 
@@ -51,7 +51,8 @@ public class NoteApp {
                             break;
                 case "4":   root = new NoteGroup(1, "Notes");
                             break;
-                case "5":   System.exit(0);
+                case "5":   input.close();
+                            System.exit(0);
                             break;
                 default:    display.displayMessage("Invalid Input");
                             break;
@@ -59,7 +60,7 @@ public class NoteApp {
         }
     }
 
-    public void notesMenu(){
+    private void notesMenu(){
 
         Stack<NoteGroup> noteGroupStack = new Stack<>();
         NoteGroup currentGroup = (NoteGroup) root;
@@ -161,7 +162,7 @@ public class NoteApp {
             }else{
                 throw new IllegalArgumentException("Illegal State Operation");
             }
-            display.displayMessage("Successfuly changed the state");
+            display.displayMessage("Successfully changed the state");
 
         } catch (IllegalStateChange | IllegalArgumentException ex) {
 
