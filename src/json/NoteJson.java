@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class NoteJson implements JsonSaver {
+public class NoteJson implements JsonConverter {
 
     @Override
     public String toJson(INote note) {

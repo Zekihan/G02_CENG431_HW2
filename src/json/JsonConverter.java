@@ -2,7 +2,7 @@ package json;
 
 import note.INote;
 
-public interface JsonSaver {
+public interface JsonConverter {
 
     public String toJson(INote note);
 

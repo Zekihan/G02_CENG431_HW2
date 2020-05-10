@@ -4,6 +4,8 @@ import io.ConsoleDisplay;
 import io.ConsoleInput;
 import io.Display;
 import io.Input;
+import json.NoteSaver;
+import json.NoteStorage;
 import note.INote;
 import note.Note;
 import note.NoteGroup;
@@ -41,6 +43,7 @@ public class NoteApp {
         root = new NoteGroup(0, "Notes");
         input = new ConsoleInput();
         display = new ConsoleDisplay();
+        NoteStorage noteStorage = new NoteSaver();
 
         demo();
 
@@ -48,17 +51,25 @@ public class NoteApp {
             display.displayMessage("\nNote App");
             display.displayTitle(1, "Notes");
             display.displayTitle(2, "Export Notes as Json");
-            display.displayTitle(3, "Reset Notes");
-            display.displayTitle(4, "Exit");
+            display.displayTitle(3, "Import Notes");
+            display.displayTitle(4, "Reset Notes");
+            display.displayTitle(5, "Exit");
 
             switch (input.readString()){
                 case "1":   notesMenu();
                             break;
-                case "2":   //todo
+                case "2":
+                            noteStorage.saveNotes(root);
                             break;
-                case "3":   root = new NoteGroup(1, "Notes");
+                case "3":
+                            if(noteStorage.checkSave())
+                                root = noteStorage.loadNotes();
+                            else
+                                display.displayMessage("No file to import.");
                             break;
-                case "4":   System.exit(0);
+                case "4":   root = new NoteGroup(1, "Notes");
+                            break;
+                case "5":   System.exit(0);
                             break;
                 default:    break;
             }
