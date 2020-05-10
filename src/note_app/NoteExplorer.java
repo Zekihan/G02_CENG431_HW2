@@ -122,9 +122,9 @@ public class NoteExplorer {
     private void changeNoteState(Note note, int op){
         try {
             if(op == 1){
-                note.cancel();
-            }else if(op == 2){
                 note.complete();
+            }else if(op == 2){
+                note.cancel();
             }else{
                 throw new IllegalArgumentException("Illegal State Operation");
             }
