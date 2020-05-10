@@ -8,10 +8,10 @@ import java.util.Scanner;
 
 public class FileIO{
 
-    private final String filePath;
+    private String filePath;
 
     public FileIO(String filePath) {
-        this.filePath = filePath;
+        setFilePath(filePath);
     }
 
     //Write the given string to the file
@@ -49,9 +49,7 @@ public class FileIO{
     }
 
     public Boolean checkSave(){
-
         File f = new File(filePath);
-
         return f.exists() && !f.isDirectory();
     }
 
@@ -59,4 +57,12 @@ public class FileIO{
         File f = new File(filePath);
         return f.delete();
     }
+
+    public void setFilePath(String filePath){
+        if(filePath == null || filePath == ""){
+            throw new IllegalArgumentException("File path cannot be empty or null.");
+        }
+        this.filePath = filePath;
+    }
+
 }

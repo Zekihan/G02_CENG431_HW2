@@ -11,15 +11,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class NoteJson implements JsonConverter {
+public class NoteJson implements IConverter {
 
-    @Override
-    public String toJson(INote note) {
+
+    public String convertToFormat(INote note) {
         return INoteToJson(note);
     }
 
-    @Override
-    public INote fromJson(String note) {
+    public INote toNote(String note) {
         return INoteFromJson(note);
     }
 

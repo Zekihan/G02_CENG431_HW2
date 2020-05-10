@@ -10,7 +10,6 @@ public class ConsoleInput implements Input{
         this.sc = new Scanner(System.in);
     }
 
-    @Override
     public String readString() {
         return sc.nextLine();
     }

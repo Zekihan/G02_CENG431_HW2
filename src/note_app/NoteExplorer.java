@@ -6,7 +6,7 @@ import note.INote;
 import note.Note;
 import note.NoteGroup;
 import note.state.INoteState;
-import note.state.IllegalStateChange;
+import exceptions.IllegalStateChangeException;
 import note.state.IncompleteState;
 import note.state.PermanentState;
 
@@ -130,12 +130,13 @@ public class NoteExplorer {
             }
             display.displayMessage("Successfully changed the state");
 
-        } catch (IllegalStateChange | IllegalArgumentException ex) {
+        } catch (IllegalStateChangeException | IllegalArgumentException ex) {
 
             display.displayMessage("Failed state change: " + ex.getMessage() + "\n");
         }
     }
 
+    //Generates an id that is not already picked by an INote
     private int generateId(NoteGroup noteGroup){
         List<INote> notes = noteGroup.getNotes();
         int max = 0;
@@ -147,10 +148,12 @@ public class NoteExplorer {
         return max + 1;
     }
 
+    //Returns true if the given argument is of type Note.
     private boolean isNote(INote note){
         return Note.class == note.getClass();
     }
 
+    //Returns true if the given String contains numeric values.
     private boolean isNumeric(String strNum) {
         try {
             Integer.parseInt(strNum);

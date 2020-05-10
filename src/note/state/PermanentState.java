@@ -1,16 +1,16 @@
 package note.state;
 
+import exceptions.IllegalStateChangeException;
 import note.Note;
 
 public class PermanentState implements INoteState{
-    @Override
+
     public void cancel(Note note) {
         note.setState(new CancelledState());
     }
 
-    @Override
-    public void complete(Note note) throws IllegalStateChange{
-        throw new IllegalStateChange("Permanent notes cannot be completed.");
+    public void complete(Note note) throws IllegalStateChangeException {
+        throw new IllegalStateChangeException("Permanent notes cannot be completed.");
     }
 
     @Override

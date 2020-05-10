@@ -3,7 +3,7 @@ package note;
 import io.ConsoleDisplay;
 import io.Display;
 import note.state.INoteState;
-import note.state.IllegalStateChange;
+import exceptions.IllegalStateChangeException;
 
 import java.util.Date;
 
@@ -15,9 +15,13 @@ public class Note extends AbstractNote {
 
     public Note(int id, String title, INoteState state, String content, Date date) {
         super(id, title);
-        this.state = state;
-        this.content = content;
-        this.date = date;
+        setState(state);
+        setContent(content);
+        setDate(date);
+    }
+
+    public Note(Note note){
+        this(note.getId(), note.getTitle(), note.getState(), note.getContent(), note.getDate());
     }
 
     public INoteState getState() {
@@ -25,14 +29,17 @@ public class Note extends AbstractNote {
     }
 
     public void setState(INoteState state) {
+        if(state == null){
+            throw new IllegalArgumentException("State argument cannot be null");
+        }
         this.state = state;
     }
 
-    public void cancel() throws IllegalStateChange {
+    public void cancel() throws IllegalStateChangeException {
         state.cancel(this);
     }
 
-    public void complete() throws IllegalStateChange {
+    public void complete() throws IllegalStateChangeException {
         state.complete(this);
     }
 
@@ -47,5 +54,21 @@ public class Note extends AbstractNote {
 
     private Date getDate() {
         return date;
+    }
+
+    //Check if the given content for a note is empty or null.
+    private void setContent(String content){
+        if(content == null || content == ""){
+            throw new IllegalArgumentException("Content of a note cannot be empty or null");
+        }
+        this.content = content;
+    }
+
+    //Check if the given date for a note is null.
+    private void setDate(Date date){
+        if(date == null){
+            throw new IllegalArgumentException("Date of a note cannot be null");
+        }
+        this.date = date;
     }
 }

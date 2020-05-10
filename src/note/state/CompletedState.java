@@ -1,16 +1,17 @@
 package note.state;
 
+import exceptions.IllegalStateChangeException;
 import note.Note;
 
 public class CompletedState implements INoteState{
-    @Override
-    public void cancel(Note note) throws IllegalStateChange{
-        throw new IllegalStateChange("Completed notes cannot be canceled.");
+
+    public void cancel(Note note) throws IllegalStateChangeException {
+        throw new IllegalStateChangeException("Completed notes cannot be cancelled.");
     }
 
-    @Override
-    public void complete(Note note) throws IllegalStateChange{
-        throw new IllegalStateChange("This note is already completed.");
+
+    public void complete(Note note) throws IllegalStateChangeException {
+        throw new IllegalStateChangeException("This note has already been completed.");
     }
 
     @Override
