@@ -12,9 +12,7 @@ public class ConsoleInput implements Input{
 
     @Override
     public String readString() {
-        String str = sc.nextLine();
-
-        return str;
+        return sc.nextLine();
     }
 
     public void close(){

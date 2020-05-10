@@ -22,30 +22,12 @@ public class NoteApp {
     Display display;
     Input input;
 
-    private void demo(){
-        Date date = new Date();
-        INote note1 = new Note(1,"title1", new PermanentState(), "content1", date);
-        INote note2 = new Note(2,"title2", new IncompleteState(), "content2", date);
-        INote note3 = new Note(3,"title3", new PermanentState(), "content3", date);
-        INote note4 = new Note(4,"title4", new IncompleteState(), "content4", date);
-        INote note5 = new Note(5,"title5", new IncompleteState(), "content5", date);
-        NoteGroup group1 = new NoteGroup(6, "birthday notes", new LinkedList<>());
-        group1.add(note3);
-        group1.add(note4);
-        ((NoteGroup)root).add(note1);
-        ((NoteGroup)root).add(note2);
-        ((NoteGroup)root).add(note5);
-        ((NoteGroup)root).add(group1);
-    }
-
     public void start(){
 
         root = new NoteGroup(0, "Notes");
         input = new ConsoleInput();
         display = new ConsoleDisplay();
         NoteStorage noteStorage = new NoteSaver();
-
-        demo();
 
         while(true){
             display.displayMessage("\nNote App");
@@ -71,7 +53,8 @@ public class NoteApp {
                             break;
                 case "5":   System.exit(0);
                             break;
-                default:    break;
+                default:    display.displayMessage("Invalid Input");
+                            break;
             }
         }
     }
@@ -105,8 +88,15 @@ public class NoteApp {
 
                     if(inputStr.equals("C")){
                         display.displayMessage("1:Complete 2:Cancel");
-                        i = Integer.parseInt(input.readString());
-                        changeNoteState((Note) nextNote, i);
+                        inputStr = input.readString();
+                        if(isNumeric(inputStr)){
+                            i = Integer.parseInt(inputStr);
+                            changeNoteState((Note) nextNote, i);
+                        }else{
+                            display.displayMessage("Invalid input");
+                        }
+                    }else{
+                        display.displayMessage("Invalid input");
                     }
                 }else{
                     noteGroupStack.add(currentGroup);
@@ -126,7 +116,8 @@ public class NoteApp {
                                 break;
                     case "Q":   isBrowsing = false;
                                 break;
-                    default:    break;
+                    default:    display.displayMessage("Invalid input");
+                                break;
                 }
             }
         }
@@ -145,6 +136,7 @@ public class NoteApp {
         }else if(stateStr.equals("I")){
             state = new IncompleteState();
         }else{
+            display.displayMessage("Invalid input");
             return;
         }
         int id = generateId(group);
