@@ -4,6 +4,6 @@ CENG 431 Building Software Systems
 Noting Application
 
 Concepts
-> Composite Design Pattern
-> State Design Pattern
-> GRASP
+- Composite Design Pattern
+- State Design Pattern
+- GRASP
